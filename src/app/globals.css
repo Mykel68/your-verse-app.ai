@@ -44,7 +44,7 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  /* --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -75,11 +75,77 @@
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-ring: oklch(0.708 0 0); */
+  /* Spiritual color palette */
+  --background: 220 25% 98%;
+  --foreground: 225 25% 15%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 225 25% 15%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 225 25% 15%;
+
+  /* Deep spiritual blue as primary */
+  --primary: 220 60% 25%;
+  --primary-foreground: 45 100% 95%;
+
+  /* Soft golden secondary */
+  --secondary: 45 85% 88%;
+  --secondary-foreground: 220 60% 25%;
+
+  /* Muted tones */
+  --muted: 220 20% 95%;
+  --muted-foreground: 220 15% 55%;
+
+  /* Golden accent */
+  --accent: 45 95% 65%;
+  --accent-foreground: 220 60% 25%;
+
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  --border: 220 20% 88%;
+  --input: 220 20% 88%;
+  --ring: 45 95% 65%;
+
+  --radius: 0.75rem;
+
+  /* Custom design tokens */
+  --gradient-divine: linear-gradient(
+    135deg,
+    hsl(220 60% 25%),
+    hsl(245 55% 35%)
+  );
+  --gradient-golden: linear-gradient(135deg, hsl(45 95% 65%), hsl(35 85% 75%));
+  --gradient-card: linear-gradient(
+    145deg,
+    hsl(0 0% 100% / 0.9),
+    hsl(220 20% 98% / 0.8)
+  );
+  --shadow-divine: 0 20px 40px -12px hsl(220 60% 25% / 0.25);
+  --shadow-card: 0 10px 30px -5px hsl(220 25% 15% / 0.1);
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --sidebar-background: 0 0% 98%;
+
+  --sidebar-foreground: 240 5.3% 26.1%;
+
+  --sidebar-primary: 240 5.9% 10%;
+
+  --sidebar-primary-foreground: 0 0% 98%;
+
+  --sidebar-accent: 240 4.8% 95.9%;
+
+  --sidebar-accent-foreground: 240 5.9% 10%;
+
+  --sidebar-border: 220 13% 91%;
+
+  --sidebar-ring: 217.2 91.2% 59.8%;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  /* --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -109,14 +175,111 @@
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar-ring: oklch(0.556 0 0); */
+  /* Dark spiritual theme */
+  --background: 220 25% 8%;
+  --foreground: 45 100% 95%;
+
+  --card: 220 20% 12%;
+  --card-foreground: 45 100% 95%;
+
+  --popover: 220 20% 12%;
+  --popover-foreground: 45 100% 95%;
+
+  /* Light golden primary in dark mode */
+  --primary: 45 95% 70%;
+  --primary-foreground: 220 25% 8%;
+
+  --secondary: 220 25% 18%;
+  --secondary-foreground: 45 100% 95%;
+
+  --muted: 220 20% 15%;
+  --muted-foreground: 220 15% 65%;
+
+  /* Bright golden accent */
+  --accent: 45 95% 75%;
+  --accent-foreground: 220 25% 8%;
+
+  --destructive: 0 62.8% 50%;
+  --destructive-foreground: 45 100% 95%;
+
+  --border: 220 20% 20%;
+  --input: 220 20% 20%;
+  --ring: 45 95% 75%;
+
+  /* Dark mode gradients */
+  --gradient-divine: linear-gradient(135deg, hsl(220 25% 8%), hsl(220 20% 15%));
+  --gradient-golden: linear-gradient(135deg, hsl(45 95% 70%), hsl(35 85% 60%));
+  --gradient-card: linear-gradient(
+    145deg,
+    hsl(220 20% 12% / 0.9),
+    hsl(220 15% 10% / 0.8)
+  );
+  --shadow-divine: 0 20px 40px -12px hsl(0 0% 0% / 0.4);
+  --shadow-card: 0 10px 30px -5px hsl(0 0% 0% / 0.3);
+  --sidebar-background: 240 5.9% 10%;
+  --sidebar-foreground: 240 4.8% 95.9%;
+  --sidebar-primary: 224.3 76.3% 48%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 240 3.7% 15.9%;
+  --sidebar-accent-foreground: 240 4.8% 95.9%;
+  --sidebar-border: 240 3.7% 15.9%;
+  --sidebar-ring: 217.2 91.2% 59.8%;
 }
 
-@layer base {
+/* @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+  }
+} */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Custom typography for verses */
+  .verse-text {
+    font-family: "Crimson Text", "Times New Roman", serif;
+    line-height: 1.6;
+  }
+
+  .verse-elegant {
+    font-family: "Playfair Display", "Times New Roman", serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer utilities {
+  .gradient-divine {
+    background: var(--gradient-divine);
+  }
+
+  .gradient-golden {
+    background: var(--gradient-golden);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-divine {
+    box-shadow: var(--shadow-divine);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .transition-smooth {
+    transition: var(--transition-smooth);
   }
 }
