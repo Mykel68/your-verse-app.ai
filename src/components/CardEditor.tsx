@@ -1,18 +1,15 @@
 "use client";
 
-import { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Download, Share2, Sparkles, Heart } from 'lucide-react';
-// import { ImageUpload } from './ImageUpload';
-// import { VerseSelector } from './VerseSelector';
-// import { VerseCard } from './VerseCard';
-// import { useToast } from '@/components/ui/use-toast';
-import { toast } from "sonner"
-import html2canvas from 'html2canvas';
-import { ImageUpload } from './ImageUpload';
-import { VerseSelector } from './VerseSelector';
-import { VerseCard } from './VerseCard';
+import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Download, Share2, Sparkles, Heart } from "lucide-react";
+import { toast } from "sonner";
+import { ImageUpload } from "./ImageUpload";
+import { VerseSelector } from "./VerseSelector";
+import { VerseCard } from "./VerseCard";
+// @ts-ignore
+import domtoimage from "dom-to-image-more";
 
 interface Verse {
   text: string;
@@ -23,7 +20,7 @@ export const CardEditor = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedVerse, setSelectedVerse] = useState<Verse | null>(null);
   const [isDownloading, setIsDownloading] = useState(false);
-//   const { toast } = useToast();
+  //   const { toast } = useToast();
 
   const handleImageSelected = (imageUrl: string) => {
     setSelectedImage(imageUrl);
@@ -48,118 +45,97 @@ export const CardEditor = () => {
   };
 
   const handleDownload = async () => {
-    if (!selectedVerse) {
-    //   toast({
-    //     title: "Please select a verse",
-    //     description: "Add a verse to your card before downloading",
-    //     variant: "destructive",
-    //   });
-    toast.error("Please select a verse. Add a verse to your card before downloading");
-      return;
-    }
+    const card = document.getElementById("verse-card");
+    if (!card) return;
 
-    setIsDownloading(true);
-    
+    // Strip borders/shadows from card and children
+    card.classList.add("no-borders");
+
     try {
-      const cardElement = document.getElementById('verse-card');
-      if (!cardElement) {
-        throw new Error('Card element not found');
-      }
-
-      const canvas = await html2canvas(cardElement, {
-        backgroundColor: null,
-        scale: 2, // Higher quality
-        useCORS: true,
-        allowTaint: true,
+      const dataUrl = await domtoimage.toPng(card, {
+        quality: 1,
+        bgcolor: "#171717",
       });
-
-      // Create download link
-      const link = document.createElement('a');
-      link.download = `verse-card-${selectedVerse.reference.replace(/[^a-zA-Z0-9]/g, '-')}.png`;
-      link.href = canvas.toDataURL('image/png');
-      
-      // Trigger download
-      document.body.appendChild(link);
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = "verse-card.png";
       link.click();
-      document.body.removeChild(link);
-
-    //   toast({
-    //     title: "Card downloaded!",
-    //     description: "Your verse card has been saved to your device",
-    //   });
-    toast.success("Card downloaded! Your verse card has been saved to your device");
-    } catch (error) {
-      console.error('Error downloading card:', error);
-    //   toast({
-    //     title: "Download failed",
-    //     description: "There was an error creating your card. Please try again.",
-    //     variant: "destructive",
-    //   });
-    toast.error("Download failed. There was an error creating your card. Please try again.");
     } finally {
-      setIsDownloading(false);
+      card.classList.remove("no-borders");
     }
   };
 
   const handleShare = async () => {
     if (!selectedVerse) {
-    //   toast({
-    //     title: "Please select a verse",
-    //     description: "Add a verse to your card before sharing",
-    //     variant: "destructive",
-    //   });
-    toast.error("Please select a verse. Add a verse to your card before sharing");
+      //   toast({
+      //     title: "Please select a verse",
+      //     description: "Add a verse to your card before sharing",
+      //     variant: "destructive",
+      //   });
+      toast.error(
+        "Please select a verse. Add a verse to your card before sharing"
+      );
       return;
     }
 
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Beautiful Bible Verse Card',
+          title: "Beautiful Bible Verse Card",
           text: `"${selectedVerse.text}" - ${selectedVerse.reference}`,
           url: window.location.href,
         });
       } catch (error) {
-        console.error('Error sharing:', error);
+        console.error("Error sharing:", error);
       }
     } else {
       // Fallback: copy to clipboard
       const shareText = `"${selectedVerse.text}" - ${selectedVerse.reference}`;
       await navigator.clipboard.writeText(shareText);
-    //   toast({
-    //     title: "Copied to clipboard!",
-    //     description: "Verse text has been copied for sharing",
-    //   });
-    toast.success("Copied to clipboard! Verse text has been copied for sharing");
+      //   toast({
+      //     title: "Copied to clipboard!",
+      //     description: "Verse text has been copied for sharing",
+      //   });
+      toast.success(
+        "Copied to clipboard! Verse text has been copied for sharing"
+      );
     }
   };
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <div
+      className="min-h-screen bg-background relative overflow-hidden"
+      id="main"
+    >
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5 pointer-events-none" />
-      <div className="absolute top-1/4 -right-32 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 -left-32 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-      
-      <div className="relative z-10 p-4 sm:p-6 lg:p-8">
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-accent via-transparent to-primary pointer-events-none" />
+      <div className="absolute top-1/4 -right-32 w-64 h-64 bg-accent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -left-32 w-64 h-64 bg-primary rounded-full blur-3xl pointer-events-none" /> */}
+
+      <div className="relative z-10 p-4 sm:p-6 lg:p-16">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12 animate-fade-in">
             <div className="inline-flex items-center gap-2 mb-4">
-              <Sparkles className="h-8 w-8 text-accent animate-pulse-glow" />
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold gradient-divine bg-clip-text text-transparent">
-                Bible Verse Card Creator
+              {/* <Sparkles className="h-8 w-8 text-accent animate-pulse-glow" /> */}
+              <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-[hsl(220_60%_25%)] to-[hsl(245_55%_35%)] bg-clip-text text-transparent tracking-tight">
+                Your Verse App
               </h1>
-              <Heart className="h-8 w-8 text-accent animate-float" />
+
+              <Heart className="h-5 w-5 text-accent animate-float" />
             </div>
-            <p className="text-muted-foreground text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
-              Transform your favorite scriptures into stunning visual cards that inspire and uplift
+            <p className="text-muted-foreground text-balance text-lg max-w-2xl mx-auto leading-tight">
+              Transform your favorite scriptures into stunning visual cards that
+              inspire and uplift
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 xl:gap-12 items-start">
             {/* Left Panel - Editor */}
-            <div className="space-y-8 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+            <div
+              className="space-y-8 animate-slide-up"
+              style={{ animationDelay: "0.1s" }}
+            >
               {/* Image Upload */}
               <div className="group">
                 <h2 className="text-xl font-semibold mb-6 flex items-center transition-transform group-hover:translate-x-1">
@@ -183,11 +159,11 @@ export const CardEditor = () => {
                   </span>
                   Choose Your Verse
                 </h2>
-              <VerseSelector
-                onVerseSelected={handleVerseSelected}
-                currentVerse={selectedVerse}
-              />
-            </div>
+                <VerseSelector
+                  onVerseSelected={handleVerseSelected}
+                  currentVerse={selectedVerse}
+                />
+              </div>
 
               {/* Action Buttons */}
               <div className="group">
@@ -231,22 +207,30 @@ export const CardEditor = () => {
             </div>
 
             {/* Right Panel - Preview */}
-            <div className="sticky top-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <div
+              className="sticky top-8 animate-slide-up"
+              style={{ animationDelay: "0.2s" }}
+            >
               <div className="text-center mb-6">
                 <h2 className="text-xl font-semibold mb-2 flex items-center justify-center gap-2">
                   <Sparkles className="h-5 w-5 text-accent" />
                   Live Preview
                   <Sparkles className="h-5 w-5 text-accent" />
                 </h2>
-                <p className="text-muted-foreground text-sm">Your card updates in real-time</p>
+                <p className="text-muted-foreground text-sm">
+                  Your card updates in real-time
+                </p>
               </div>
               <div className="flex justify-center">
-                <div 
-                  id="verse-card" 
+                <div
+                  id="verse-card"
                   className="w-full max-w-sm transition-all duration-500 hover:scale-105"
-                  style={{ 
-                    filter: selectedImage && selectedVerse ? 'none' : 'grayscale(0.3) opacity(0.7)',
-                    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                  style={{
+                    filter:
+                      selectedImage && selectedVerse
+                        ? "none"
+                        : "grayscale(0.3) opacity(0.7)",
+                    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                   }}
                 >
                   <VerseCard
@@ -256,15 +240,29 @@ export const CardEditor = () => {
                   />
                 </div>
               </div>
-              
+
               {/* Progress indicator */}
               <div className="mt-6 flex justify-center">
                 <div className="flex items-center gap-2">
-                  <div className={`w-2 h-2 rounded-full transition-all duration-300 ${selectedImage ? 'bg-accent' : 'bg-muted-foreground/30'}`} />
+                  <div
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      selectedImage ? "bg-accent" : "bg-muted-foreground/30"
+                    }`}
+                  />
                   <div className="w-8 h-px bg-muted-foreground/20" />
-                  <div className={`w-2 h-2 rounded-full transition-all duration-300 ${selectedVerse ? 'bg-accent' : 'bg-muted-foreground/30'}`} />
+                  <div
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      selectedVerse ? "bg-accent" : "bg-muted-foreground/30"
+                    }`}
+                  />
                   <div className="w-8 h-px bg-muted-foreground/20" />
-                  <div className={`w-2 h-2 rounded-full transition-all duration-300 ${selectedImage && selectedVerse ? 'bg-accent animate-pulse-glow' : 'bg-muted-foreground/30'}`} />
+                  <div
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      selectedImage && selectedVerse
+                        ? "bg-accent animate-pulse-glow"
+                        : "bg-muted-foreground/30"
+                    }`}
+                  />
                 </div>
               </div>
             </div>

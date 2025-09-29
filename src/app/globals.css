@@ -4,39 +4,43 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: oklch(var(--background));
+  --color-foreground: oklch(var(--foreground));
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
+
+  --color-sidebar-ring: oklch(var(--sidebar-ring));
+  --color-sidebar-border: oklch(var(--sidebar-border));
+  --color-sidebar-accent-foreground: oklch(var(--sidebar-accent-foreground));
+  --color-sidebar-accent: oklch(var(--sidebar-accent));
+  --color-sidebar-primary-foreground: oklch(var(--sidebar-primary-foreground));
+  --color-sidebar-primary: oklch(var(--sidebar-primary));
+  --color-sidebar-foreground: oklch(var(--sidebar-foreground));
+  --color-sidebar: oklch(var(--sidebar));
+
+  --color-chart-5: oklch(var(--chart-5));
+  --color-chart-4: oklch(var(--chart-4));
+  --color-chart-3: oklch(var(--chart-3));
+  --color-chart-2: oklch(var(--chart-2));
+  --color-chart-1: oklch(var(--chart-1));
+
+  --color-ring: oklch(var(--ring));
+  --color-input: oklch(var(--input));
+  --color-border: oklch(var(--border));
+  --color-destructive: oklch(var(--destructive));
+  --color-accent-foreground: oklch(var(--accent-foreground));
+  --color-accent: oklch(var(--accent));
+  --color-muted-foreground: oklch(var(--muted-foreground));
+  --color-muted: oklch(var(--muted));
+  --color-secondary-foreground: oklch(var(--secondary-foreground));
+  --color-secondary: oklch(var(--secondary));
+  --color-primary-foreground: oklch(var(--primary-foreground));
+  --color-primary: oklch(var(--primary));
+  --color-popover-foreground: oklch(var(--popover-foreground));
+  --color-popover: oklch(var(--popover));
+  --color-card-foreground: oklch(var(--card-foreground));
+  --color-card: oklch(var(--card));
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -44,197 +48,158 @@
 }
 
 :root {
-  /* --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0); */
-  /* Spiritual color palette */
-  --background: 220 25% 98%;
-  --foreground: 225 25% 15%;
+  /* Biblical Light Theme - Inspired by Jerusalem stone, sacred gold, and heavenly blues */
+  --background: 0.96 0.02 60; /* Warm parchment white */
+  --foreground: 0.18 0.03 30; /* Deep scripture brown */
 
-  --card: 0 0% 100%;
-  --card-foreground: 225 25% 15%;
+  --card: 0.98 0.01 50; /* Pure scroll white */
+  --card-foreground: 0.18 0.03 30;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 225 25% 15%;
+  --popover: 0.98 0.01 50;
+  --popover-foreground: 0.18 0.03 30;
 
-  /* Deep spiritual blue as primary */
-  --primary: 220 60% 25%;
-  --primary-foreground: 45 100% 95%;
+  --primary: 0.45 0.15 240; /* Royal biblical blue */
+  --primary-foreground: 0.98 0.01 50;
 
-  /* Soft golden secondary */
-  --secondary: 45 85% 88%;
-  --secondary-foreground: 220 60% 25%;
+  --secondary: 0.88 0.08 80; /* Golden sand */
+  --secondary-foreground: 0.25 0.04 35;
 
-  /* Muted tones */
-  --muted: 220 20% 95%;
-  --muted-foreground: 220 15% 55%;
+  --muted: 0.92 0.03 70; /* Soft temple stone */
+  --muted-foreground: 0.55 0.04 40;
 
-  /* Golden accent */
-  --accent: 45 95% 65%;
-  --accent-foreground: 220 60% 25%;
+  --accent: 0.75 0.18 50; /* Sacred gold */
+  --accent-foreground: 0.98 0.01 50;
 
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive: 0.55 0.22 15; /* Crimson red */
+  --destructive-foreground: 0.98 0.01 50;
 
-  --border: 220 20% 88%;
-  --input: 220 20% 88%;
-  --ring: 45 95% 65%;
+  --border: 0.85 0.04 65; /* Gentle stone border */
+  --input: 0.9 0.03 60;
+  --ring: 0.75 0.18 50; /* Sacred gold ring */
 
-  --radius: 0.75rem;
+  --radius: 0.5rem; /* Softer, more traditional radius */
 
-  /* Custom design tokens */
+  /* Biblical gradients */
   --gradient-divine: linear-gradient(
     135deg,
-    hsl(220 60% 25%),
-    hsl(245 55% 35%)
+    oklch(0.45 0.15 240),
+    /* Royal blue */ oklch(0.38 0.18 280) /* Deep purple */
   );
-  --gradient-golden: linear-gradient(135deg, hsl(45 95% 65%), hsl(35 85% 75%));
-  --gradient-card: linear-gradient(
+  --gradient-golden: linear-gradient(
+    135deg,
+    oklch(0.75 0.18 50),
+    /* Sacred gold */ oklch(0.68 0.2 45) /* Rich gold */
+  );
+  --gradient-heavenly: linear-gradient(
+    135deg,
+    oklch(0.85 0.12 220),
+    /* Light celestial blue */ oklch(0.78 0.15 240) /* Deeper heavenly blue */
+  );
+  --gradient-scroll: linear-gradient(
     145deg,
-    hsl(0 0% 100% / 0.9),
-    hsl(220 20% 98% / 0.8)
+    oklch(0.98 0.01 50 / 0.95),
+    oklch(0.94 0.03 60 / 0.9)
   );
-  --shadow-divine: 0 20px 40px -12px hsl(220 60% 25% / 0.25);
-  --shadow-card: 0 10px 30px -5px hsl(220 25% 15% / 0.1);
-  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-  --sidebar-background: 0 0% 98%;
+  /* Biblical shadows */
+  --shadow-divine: 0 12px 35px -8px oklch(0.45 0.15 240 / 0.25);
+  --shadow-golden: 0 8px 25px -5px oklch(0.75 0.18 50 / 0.3);
+  --shadow-scroll: 0 6px 20px -3px oklch(0.18 0.03 30 / 0.15);
 
-  --sidebar-foreground: 240 5.3% 26.1%;
+  --transition-sacred: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-  --sidebar-primary: 240 5.9% 10%;
+  /* Chart colors - Biblical palette */
+  --chart-1: 0.45 0.15 240; /* Royal blue */
+  --chart-2: 0.75 0.18 50; /* Sacred gold */
+  --chart-3: 0.55 0.18 320; /* Royal purple */
+  --chart-4: 0.6 0.15 160; /* Olive green */
+  --chart-5: 0.55 0.22 15; /* Crimson red */
 
-  --sidebar-primary-foreground: 0 0% 98%;
-
-  --sidebar-accent: 240 4.8% 95.9%;
-
-  --sidebar-accent-foreground: 240 5.9% 10%;
-
-  --sidebar-border: 220 13% 91%;
-
-  --sidebar-ring: 217.2 91.2% 59.8%;
+  /* Sidebar - Temple theme */
+  --sidebar: 0.94 0.03 55;
+  --sidebar-foreground: 0.22 0.04 30;
+  --sidebar-primary: 0.45 0.15 240;
+  --sidebar-primary-foreground: 0.98 0.01 50;
+  --sidebar-accent: 0.9 0.04 60;
+  --sidebar-accent-foreground: 0.25 0.04 35;
+  --sidebar-border: 0.88 0.04 60;
+  --sidebar-ring: 0.75 0.18 50;
 }
 
 .dark {
-  /* --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0); */
-  /* Dark spiritual theme */
-  --background: 220 25% 8%;
-  --foreground: 45 100% 95%;
+  /* Biblical Dark Theme - Night in Bethlehem, starlit sky */
+  --background: 0.12 0.03 240; /* Deep midnight blue */
+  --foreground: 0.92 0.02 60; /* Warm candlelight */
 
-  --card: 220 20% 12%;
-  --card-foreground: 45 100% 95%;
+  --card: 0.16 0.03 235; /* Dark scroll */
+  --card-foreground: 0.92 0.02 60;
 
-  --popover: 220 20% 12%;
-  --popover-foreground: 45 100% 95%;
+  --popover: 0.16 0.03 235;
+  --popover-foreground: 0.92 0.02 60;
 
-  /* Light golden primary in dark mode */
-  --primary: 45 95% 70%;
-  --primary-foreground: 220 25% 8%;
+  --primary: 0.75 0.18 50; /* Glowing gold */
+  --primary-foreground: 0.12 0.03 240;
 
-  --secondary: 220 25% 18%;
-  --secondary-foreground: 45 100% 95%;
+  --secondary: 0.25 0.06 240; /* Deep royal blue */
+  --secondary-foreground: 0.92 0.02 60;
 
-  --muted: 220 20% 15%;
-  --muted-foreground: 220 15% 65%;
+  --muted: 0.18 0.03 235; /* Shadowed stone */
+  --muted-foreground: 0.65 0.04 50;
 
-  /* Bright golden accent */
-  --accent: 45 95% 75%;
-  --accent-foreground: 220 25% 8%;
+  --accent: 0.78 0.2 45; /* Radiant gold */
+  --accent-foreground: 0.12 0.03 240;
 
-  --destructive: 0 62.8% 50%;
-  --destructive-foreground: 45 100% 95%;
+  --destructive: 0.5 0.2 15; /* Dark crimson */
+  --destructive-foreground: 0.92 0.02 60;
 
-  --border: 220 20% 20%;
-  --input: 220 20% 20%;
-  --ring: 45 95% 75%;
+  --border: 0.22 0.04 235;
+  --input: 0.2 0.04 235;
+  --ring: 0.78 0.2 45; /* Radiant gold ring */
 
-  /* Dark mode gradients */
-  --gradient-divine: linear-gradient(135deg, hsl(220 25% 8%), hsl(220 20% 15%));
-  --gradient-golden: linear-gradient(135deg, hsl(45 95% 70%), hsl(35 85% 60%));
-  --gradient-card: linear-gradient(
-    145deg,
-    hsl(220 20% 12% / 0.9),
-    hsl(220 15% 10% / 0.8)
+  /* Dark biblical gradients */
+  --gradient-divine: linear-gradient(
+    135deg,
+    oklch(0.12 0.03 240),
+    oklch(0.18 0.05 260)
   );
-  --shadow-divine: 0 20px 40px -12px hsl(0 0% 0% / 0.4);
-  --shadow-card: 0 10px 30px -5px hsl(0 0% 0% / 0.3);
-  --sidebar-background: 240 5.9% 10%;
-  --sidebar-foreground: 240 4.8% 95.9%;
-  --sidebar-primary: 224.3 76.3% 48%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 240 3.7% 15.9%;
-  --sidebar-accent-foreground: 240 4.8% 95.9%;
-  --sidebar-border: 240 3.7% 15.9%;
-  --sidebar-ring: 217.2 91.2% 59.8%;
-}
+  --gradient-golden: linear-gradient(
+    135deg,
+    oklch(0.78 0.2 45),
+    oklch(0.7 0.18 50)
+  );
+  --gradient-heavenly: linear-gradient(
+    135deg,
+    oklch(0.25 0.08 240),
+    oklch(0.3 0.1 220)
+  );
+  --gradient-scroll: linear-gradient(
+    145deg,
+    oklch(0.16 0.03 235 / 0.95),
+    oklch(0.14 0.03 240 / 0.9)
+  );
 
-/* @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-} */
+  /* Dark biblical shadows */
+  --shadow-divine: 0 15px 40px -10px oklch(0 0 0 / 0.5);
+  --shadow-golden: 0 10px 30px -6px oklch(0.78 0.2 45 / 0.4);
+  --shadow-scroll: 0 8px 25px -4px oklch(0 0 0 / 0.3);
+
+  /* Dark chart colors */
+  --chart-1: 0.78 0.2 45; /* Radiant gold */
+  --chart-2: 0.65 0.15 220; /* Heavenly blue */
+  --chart-3: 0.7 0.18 280; /* Royal purple */
+  --chart-4: 0.58 0.12 140; /* Olive green */
+  --chart-5: 0.6 0.18 15; /* Glowing crimson */
+
+  /* Dark sidebar - Night temple */
+  --sidebar: 0.15 0.03 235;
+  --sidebar-foreground: 0.9 0.02 60;
+  --sidebar-primary: 0.78 0.2 45;
+  --sidebar-primary-foreground: 0.12 0.03 240;
+  --sidebar-accent: 0.18 0.04 235;
+  --sidebar-accent-foreground: 0.88 0.02 60;
+  --sidebar-border: 0.2 0.04 235;
+  --sidebar-ring: 0.78 0.2 45;
+}
 
 @layer base {
   * {
@@ -243,18 +208,57 @@
 
   body {
     @apply bg-background text-foreground font-sans;
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      oklch(0.96 0.02 60 / 0.5) 0%,
+      transparent 50%
+    );
   }
 
-  /* Custom typography for verses */
+  .dark body {
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      oklch(0.15 0.04 240 / 0.3) 0%,
+      transparent 70%
+    );
+  }
+
+  /* Sacred typography for biblical content */
   .verse-text {
-    font-family: "Crimson Text", "Times New Roman", serif;
-    line-height: 1.6;
+    font-family: "Crimson Text", "Baskerville", "Times New Roman", serif;
+    line-height: 1.75;
+    color: oklch(var(--foreground));
   }
 
   .verse-elegant {
-    font-family: "Playfair Display", "Times New Roman", serif;
+    font-family: "Playfair Display", "Cormorant Garamond", serif;
     font-weight: 400;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.025em;
+    color: oklch(var(--primary));
+  }
+
+  .sacred-heading {
+    font-family: "Cinzel", "Trajan Pro", serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background: var(--gradient-golden);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Biblical scroll effect */
+  .scroll-effect {
+    background: var(--gradient-scroll);
+    border: 1px solid oklch(var(--border));
+    box-shadow: var(--shadow-scroll);
+  }
+
+  .no-borders,
+  .no-borders * {
+    border: none !important;
+    box-shadow: none !important;
   }
 }
 
@@ -267,19 +271,100 @@
     background: var(--gradient-golden);
   }
 
-  .gradient-card {
-    background: var(--gradient-card);
+  .gradient-heavenly {
+    background: var(--gradient-heavenly);
+  }
+
+  .gradient-scroll {
+    background: var(--gradient-scroll);
   }
 
   .shadow-divine {
     box-shadow: var(--shadow-divine);
   }
 
-  .shadow-card {
-    box-shadow: var(--shadow-card);
+  .shadow-golden {
+    box-shadow: var(--shadow-golden);
   }
 
-  .transition-smooth {
-    transition: var(--transition-smooth);
+  .shadow-scroll {
+    box-shadow: var(--shadow-scroll);
+  }
+
+  .transition-sacred {
+    transition: var(--transition-sacred);
+  }
+
+  /* Biblical color utilities */
+  .text-sacred-gold {
+    color: oklch(0.75 0.18 50);
+  }
+
+  .text-royal-blue {
+    color: oklch(0.45 0.15 240);
+  }
+
+  .text-royal-purple {
+    color: oklch(0.55 0.18 320);
+  }
+
+  .text-olive-green {
+    color: oklch(0.6 0.15 160);
+  }
+
+  .text-crimson {
+    color: oklch(0.55 0.22 15);
+  }
+
+  .bg-sacred-gold {
+    background-color: oklch(0.75 0.18 50);
+  }
+
+  .bg-royal-blue {
+    background-color: oklch(0.45 0.15 240);
+  }
+
+  .bg-royal-purple {
+    background-color: oklch(0.55 0.18 320);
+  }
+
+  .bg-olive-green {
+    background-color: oklch(0.6 0.15 160);
+  }
+
+  .bg-crimson {
+    background-color: oklch(0.55 0.22 15);
+  }
+
+  /* Sacred border utilities */
+  .border-sacred {
+    border: 2px solid oklch(0.75 0.18 50);
+    border-image: linear-gradient(
+        45deg,
+        oklch(0.75 0.18 50),
+        oklch(0.68 0.2 45)
+      )
+      1;
+  }
+
+  /* Halo effect for special elements */
+  .halo-effect {
+    position: relative;
+  }
+
+  .halo-effect::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: var(--gradient-golden);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    pointer-events: none;
   }
 }
+
+/* bc1qee4thzyplu6q2ssewgrthnhxvvm62c268ln6gj */
+
+/* bc1qee4thzyplu6q2ssewgrthnhxvvm62c268ln6gj */
